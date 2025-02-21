@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country-State Dropdown</title>
+    <script>
+        function populateStates() {
+            var countrySelect = document.getElementById("country");
+            var stateSelect = document.getElementById("state");
+            var selectedCountry = countrySelect.value;
+
+            var states = {
+                USA: ["California", "Texas", "New York"],
+                India: ["Maharashtra", "Karnataka", "Tamil Nadu"],
+                UK: ["England", "Scotland", "Wales"]
+            };
+
+            stateSelect.innerHTML = "";
+
+            if (selectedCountry in states) {
+                states[selectedCountry].forEach(function(state) {
+                    var option = document.createElement("option");
+                    option.value = state;
+                    option.text = state;
+                    stateSelect.appendChild(option);
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Country-State Selection</h1>
+    <label for="country">Country:</label>
+    <select id="country" onchange="populateStates()">
+        <option value="">Select a country</option>
+        <option value="USA">USA</option>
+        <option value="India">India</option>
+        <option value="UK">UK</option>
+    </select>
+
+    <label for="state">State:</label>
+    <select id="state">
+        <option value="">Select a state</option>
+    </select>
+</body>
+</html>

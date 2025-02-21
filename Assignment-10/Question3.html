@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Order Form</title>
+</head>
+<body>
+    <h1>Pizza Order Form</h1>
+    <form id="pizzaForm">
+        <fieldset>
+            <legend>Select Pizza Size</legend>
+            <label>
+                <input type="radio" name="size" value="Small" required> Small
+            </label>
+            <label>
+                <input type="radio" name="size" value="Medium"> Medium
+            </label>
+            <label>
+                <input type="radio" name="size" value="Large"> Large
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Select Toppings</legend>
+            <label>
+                <input type="checkbox" name="toppings" value="Cheese"> Cheese
+            </label>
+            <label>
+                <input type="checkbox" name="toppings" value="Pepperoni"> Pepperoni
+            </label>
+            <label>
+                <input type="checkbox" name="toppings" value="Mushrooms"> Mushrooms
+            </label>
+            <label>
+                <input type="checkbox" name="toppings" value="Olives"> Olives
+            </label>
+        </fieldset>
+        <button type="submit">Submit Order</button>
+    </form>
+    <div id="orderSummary"></div>
+
+    <script>
+        document.getElementById('pizzaForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const size = formData.get('size');
+            const toppings = formData.getAll('toppings');
+            const summary = `You ordered a ${size} pizza with the following toppings: ${toppings.join(', ')}`;
+            document.getElementById('orderSummary').innerText = summary;
+        });
+    </script>
+</body>
+</html></html>

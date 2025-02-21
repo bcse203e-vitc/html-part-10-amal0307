@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="Question10.css">
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <input type="text" id="todo-input" placeholder="Enter a new task">
+    <button id="add-btn">Add</button>
+    <ul id="todo-list"></ul>
+
+    <script>
+        document.getElementById('add-btn').addEventListener('click', function() {
+            const input = document.getElementById('todo-input');
+            const task = input.value.trim();
+            if (task) {
+                const li = document.createElement('li');
+                li.className = 'todo-item';
+                li.innerHTML = `${task} <button class="remove-btn">Remove</button>`;
+                document.getElementById('todo-list').appendChild(li);
+                input.value = '';
+            }
+        });
+
+        document.getElementById('todo-list').addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('remove-btn')) {
+                e.target.parentElement.remove();
+            }
+        });
+    </script>
+</body>
+</html>
